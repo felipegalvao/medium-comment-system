@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
-const mlabUser = require("./db-connection-secrets");
-const mlabPassword = require("./db-connection-secrets");
+const mlabSecrets = require("./db-connection-secrets");
+
+const mlabUser = mlabSecrets.mlabUser;
+const mlabPassword = mlabSecrets.mlabPassword;
 
 mongoose.connect(
   "mongodb://" +
