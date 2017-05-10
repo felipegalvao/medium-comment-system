@@ -2,8 +2,9 @@ const express = require("express");
 const app = express();
 const db = require("./db");
 
-app.use((req,res, next) => {  
+app.use((req,res, next) => {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8000');
+  next();
 })
 
 const CommentController = require("./comment/CommentController");
