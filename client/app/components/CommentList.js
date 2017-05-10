@@ -1,11 +1,18 @@
 import React from "react";
 
+import Comment from "./Comment";
+
 const CommentList = ({ comments }) => {
-  const commentList = comments.map((comment) => {
+  const commentList = comments.map(comment => {
     return (
-      <p>{comment.id} - {comment.text}</p>
-    )
-  })
+      <Comment
+        key={comment.id}
+        text={comment.text}
+        start={comment.start}
+        end={comment.end}
+      />
+    );
+  });
 
   return (
     <div className="row">
