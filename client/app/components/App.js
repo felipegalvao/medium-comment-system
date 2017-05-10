@@ -24,14 +24,16 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    console.log("componentDidMount");
-    api.getComments().then(comments => {
-      console.log("componentDidMount");
-      this.setState({ comments })
-    }).catch((res) => {
-      console.log(res);
-    })
-  }
+    api
+      .getComments()
+      .then(comments => {
+        console.log("componentDidMount");
+        this.setState({ comments, commentsLoading: false });
+      })
+      .catch(res => {
+        console.log(res);
+      });
+  };
 
   render() {
     return (
@@ -42,6 +44,7 @@ class App extends Component {
         <CommentList
           comments={this.state.comments}
           postText={this.state.postText}
+          commentsLoading={this.state.commentsLoading}
         />
       </div>
     );
