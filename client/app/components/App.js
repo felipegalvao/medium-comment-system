@@ -9,20 +9,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      comments: [
-        {
-          id: 1,
-          start: 5,
-          end: 15,
-          text: "test comment 1"
-        },
-        {
-          id: 2,
-          start: 1,
-          end: 20,
-          text: "test comment 2"
-        }
-      ],
+      comments: [],
       commentsLoading: true,
       postText: `Far far away, behind the word mountains, far from the countries
       Vokalia and Consonantia, there live the blind texts. Separated they
@@ -36,13 +23,26 @@ class App extends Component {
     };
   }
 
+  componentDidMount = () => {
+    console.log("componentDidMount");
+    api.getComments().then(comments => {
+      console.log("componentDidMount");
+      this.setState({ comments })
+    }).catch((res) => {
+      console.log(res);
+    })
+  }
+
   render() {
     return (
       <div className="container">
         <h1 className="text-center">Medium Post</h1>
         <Post postText={this.state.postText} />
         <AddComment />
-        <CommentList comments={this.state.comments} postText={this.state.postText} />
+        <CommentList
+          comments={this.state.comments}
+          postText={this.state.postText}
+        />
       </div>
     );
   }
