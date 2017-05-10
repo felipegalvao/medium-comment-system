@@ -1,2 +1,3 @@
 node_modules/
 db-connection-secrets.js
+npm-debug.log
