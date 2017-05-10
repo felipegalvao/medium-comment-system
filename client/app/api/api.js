@@ -8,7 +8,11 @@ module.exports = {
         return res.data;
       })
       .catch(res => {
-        return "An error occurred";
+        return "An error has occured"
       });
+  },
+
+  consoleTest: () => {
+    console.log("consoleTest");
   }
 };
