@@ -2,7 +2,7 @@ import React from "react";
 
 import Comment from "./Comment";
 
-const CommentList = ({ comments }) => {
+const CommentList = ({ comments, postText }) => {
   const commentList = comments.map(comment => {
     return (
       <Comment
@@ -10,6 +10,7 @@ const CommentList = ({ comments }) => {
         text={comment.text}
         start={comment.start}
         end={comment.end}
+        postText={postText}
       />
     );
   });

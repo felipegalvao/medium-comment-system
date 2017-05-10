@@ -34,7 +34,7 @@ const App = () => {
       <h1 className="text-center">Medium Post</h1>
       <Post postText={postText} />
       <AddComment />
-      <CommentList comments={comments} />
+      <CommentList comments={comments} postText={postText} />
     </div>
   )
 };
