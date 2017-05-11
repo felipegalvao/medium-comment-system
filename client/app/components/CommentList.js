@@ -2,14 +2,13 @@ import React from "react";
 
 import Comment from "./Comment";
 
-const CommentList = ({ comments, postText, commentsLoading }) => {
+const CommentList = ({ comments, commentsLoading }) => {
   const commentList = comments.map(comment => {
     return (
       <Comment
         key={comment._id}
         text={comment.text}
         postFragment={comment.postFragment}
-        postText={postText}
       />
     );
   });
@@ -18,7 +17,7 @@ const CommentList = ({ comments, postText, commentsLoading }) => {
     <div className="row comment-list">
       <div className="col-xs-8 col-xs-offset-2 comment-list__column">
         <h3>Comment List</h3>
-        {commentsLoading ? <p>Comments Loading...</p> : commentList}
+        {commentsLoading ? <p className="comment-list__loading-notification">Comments Loading...</p> : commentList}
       </div>
     </div>
   );

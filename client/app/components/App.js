@@ -47,8 +47,7 @@ class App extends Component {
         <Post postText={this.state.postText} />
         <AddComment updateAppState={this.handleAppUpdate} />
         <CommentList
-          comments={this.state.comments}
-          postText={this.state.postText}
+          comments={this.state.comments}          
           commentsLoading={this.state.commentsLoading}
         />
       </div>

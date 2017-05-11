@@ -1,6 +1,6 @@
 import React from "react";
 
-const Comment = ({ text, postFragment, postText }) => {
+const Comment = ({ text, postFragment }) => {
   return (
     <div className="comment">
       {postFragment === "" ? "" : <p className="comment__post-fragment">{postFragment}</p>}
