@@ -1,6 +1,6 @@
 import React from "react";
 import {expect} from "chai";
-import { shallow, mount } from "enzyme";
+import { shallow } from "enzyme";
 import App from "../../app/components/App";
 
 describe("App", () => {
