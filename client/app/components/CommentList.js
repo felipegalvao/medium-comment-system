@@ -16,9 +16,9 @@ const CommentList = ({ comments, postText, commentsLoading }) => {
   });
 
   return (
-    <div className="row">
-      <div className="col-xs-8 col-xs-offset-2">
-        <p>Comment List</p>
+    <div className="row comment-list">
+      <div className="col-xs-8 col-xs-offset-2 comment-list__column">
+        <h3>Comment List</h3>
         {commentsLoading ? <p>Comments Loading...</p> : commentList}
       </div>
     </div>
