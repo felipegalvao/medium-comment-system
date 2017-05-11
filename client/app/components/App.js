@@ -27,7 +27,6 @@ class App extends Component {
     api
       .getComments()
       .then(comments => {
-        console.log("componentDidMount");
         this.setState({ comments, commentsLoading: false });
       })
       .catch(res => {
@@ -35,12 +34,18 @@ class App extends Component {
       });
   };
 
+  handleAppUpdate = comment => {
+    this.setState({
+      comments: this.state.comments.concat(comment)
+    });
+  };
+
   render() {
     return (
       <div className="container">
         <h1 className="text-center">Medium Post</h1>
         <Post postText={this.state.postText} />
-        <AddComment />
+        <AddComment updateAppState={this.handleAppUpdate} />
         <CommentList
           comments={this.state.comments}
           postText={this.state.postText}

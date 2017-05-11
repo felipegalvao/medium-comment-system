@@ -21,29 +21,40 @@ class AddComment extends Component {
     this.setState({ showForm: true, selectedText: selectedText });
   };
 
-  onCommentTextChange = (e) => {
-    this.setState({commentText: e.target.value});
-  }
+  onCommentTextChange = e => {
+    this.setState({ commentText: e.target.value });
+  };
 
-  onAddCommentFormSubmit = (e) => {
-    e.preventDefault();    
-    api.saveComment(this.state.selectedText, this.state.commentText).then(res => {
-      console.log(res);
-    })
-  }
+  onAddCommentFormSubmit = e => {
+    e.preventDefault();
+    api
+      .saveComment(this.state.selectedText, this.state.commentText)
+      .then(res => {
+        this.props.updateAppState(res.data);
+      });
+  };
 
   renderForm = () => {
     if (this.state.showForm) {
       return (
         <form onSubmit={this.onAddCommentFormSubmit}>
-          {this.state.selectedText === "" ? "" : <p>Comment for: {this.state.selectedText}</p>}
+          {this.state.selectedText === ""
+            ? ""
+            : <p>Comment for: {this.state.selectedText}</p>}
           <div className="form-group">
             <label htmlFor="comment" className="text-center">
               Add your comment below
             </label>
-            <textarea className="form-control" id="comment" rows="4" onChange={this.onCommentTextChange} />
+            <textarea
+              className="form-control"
+              id="comment"
+              rows="4"
+              onChange={this.onCommentTextChange}
+            />
           </div>
-          <button className="btn btn-primary btn-block">Finish Adding Comment</button>
+          <button className="btn btn-primary btn-block">
+            Finish Adding Comment
+          </button>
         </form>
       );
     }
@@ -53,7 +64,10 @@ class AddComment extends Component {
     return (
       <div className="row">
         <div className="col-xs-6 col-xs-offset-3">
-          <button className="btn btn-block" onClick={() => this.onShowFormClick()}>
+          <button
+            className="btn btn-block"
+            onClick={() => this.onShowFormClick()}
+          >
             Add Comment
           </button>
           {this.renderForm()}
