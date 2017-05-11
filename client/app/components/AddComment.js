@@ -21,6 +21,10 @@ class AddComment extends Component {
     this.setState({ showForm: true, selectedText: selectedText });
   };
 
+  onHideFormClick = () => {
+    this.setState({ showForm: false, selectedText: "" });
+  };
+
   onCommentTextChange = e => {
     this.setState({ commentText: e.target.value });
   };
@@ -32,30 +36,39 @@ class AddComment extends Component {
       .then(res => {
         this.props.updateAppState(res.data);
       });
+    this.setState({ showForm: false, selectedText: "", selectedText: "" });
   };
 
   renderForm = () => {
     if (this.state.showForm) {
       return (
-        <form onSubmit={this.onAddCommentFormSubmit}>
-          {this.state.selectedText === ""
-            ? ""
-            : <p>Comment for: {this.state.selectedText}</p>}
-          <div className="form-group">
-            <label htmlFor="comment" className="text-center">
-              Add your comment below
-            </label>
-            <textarea
-              className="form-control"
-              id="comment"
-              rows="4"
-              onChange={this.onCommentTextChange}
-            />
-          </div>
-          <button className="btn btn-primary btn-block">
-            Finish Adding Comment
+        <div>
+          <form onSubmit={this.onAddCommentFormSubmit}>
+            {this.state.selectedText === ""
+              ? ""
+              : <p>Comment for: {this.state.selectedText}</p>}
+            <div className="form-group">
+              <label htmlFor="comment" className="text-center">
+                Add your comment below
+              </label>
+              <textarea
+                className="form-control"
+                id="comment"
+                rows="4"
+                onChange={this.onCommentTextChange}
+              />
+            </div>
+            <button className="btn btn-primary btn-block">
+              Finish Adding Comment
+            </button>
+          </form>
+          <button
+            className="btn btn-danger btn-block"
+            onClick={() => this.onHideFormClick()}
+          >
+            Cancel
           </button>
-        </form>
+        </div>
       );
     }
   };
@@ -71,6 +84,7 @@ class AddComment extends Component {
             Add Comment
           </button>
           {this.renderForm()}
+
         </div>
       </div>
     );
