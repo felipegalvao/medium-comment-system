@@ -58,7 +58,7 @@ class AddComment extends Component {
                 onChange={this.onCommentTextChange}
               />
             </div>
-            <button className="btn btn-primary btn-block">
+            <button className="btn btn-primary btn-block add-comment__submit-button">
               Finish Adding Comment
             </button>
           </form>
@@ -75,10 +75,16 @@ class AddComment extends Component {
 
   render() {
     return (
-      <div className="row">
+      <div className="row add-comment">
         <div className="col-xs-6 col-xs-offset-3">
+          <p className="add-comment__notification">
+            <strong>
+              You can comment normally or you can also select some text to mark
+              a comment
+            </strong>
+          </p>
           <button
-            className="btn btn-block"
+            className="btn btn-block add-comment__show-form-button"
             onClick={() => this.onShowFormClick()}
           >
             Add Comment
