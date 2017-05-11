@@ -1,5 +1,8 @@
 import axios from "axios";
 
+axios.defaults.headers.post["Content-Type"] =
+  "application/x-www-form-urlencoded";
+
 module.exports = {
   getComments: () => {
     return axios
@@ -12,12 +15,15 @@ module.exports = {
       });
   },
 
-  saveComment: (postFragment, text) => {
-    return axios
-      .post("http://localhost:3000/comments", {
+  saveComment: (postFragment, text) => {        
+    return axios({
+      method: "post",
+      url: "http://localhost:3000/comments",
+      data: {
         postFragment: postFragment,
         text: text
-      })
+      }
+    })
       .then(res => {
         console.log(res);
       })
