@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "test:watch": "npm test -- --watch",
     "start": "webpack-dev-server --open",
     "build": "webpack -p --config ./webpack.prod.config.js"
   },
@@ -26,6 +27,7 @@
     "chai": "^3.5.0",
     "classnames": "^2.2.5",
     "css-loader": "^0.28.1",
+    "enzyme": "^2.8.2",
     "file-loader": "^0.11.1",
     "jest": "^20.0.0",
     "node-sass": "^4.5.2",
