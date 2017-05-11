@@ -63,7 +63,7 @@ class AddComment extends Component {
             </button>
           </form>
           <button
-            className="btn btn-danger btn-block"
+            className="btn btn-danger btn-block add-comment__cancel-button"
             onClick={() => this.onHideFormClick()}
           >
             Cancel
