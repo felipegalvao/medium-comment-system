@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const mlabSecrets = require("./db-connection-secrets");
 
 const mlabUser = process.env.MLABUSER;
 const mlabPassword = process.env.MLABPASSWORD;
