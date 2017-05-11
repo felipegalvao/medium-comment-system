@@ -1,11 +1,13 @@
 import React, { Component } from "react";
+import api from "../api/api";
 
 class AddComment extends Component {
   constructor(props) {
     super(props);
     this.state = {
       showForm: false,
-      selectedText: ""
+      selectedText: "",
+      commentText: ""
     };
   }
 
@@ -19,16 +21,27 @@ class AddComment extends Component {
     this.setState({ showForm: true, selectedText: selectedText });
   };
 
+  onCommentTextChange = (e) => {
+    this.setState({commentText: e.target.value});
+  }
+
+  onAddCommentFormSubmit = (e) => {
+    e.preventDefault();    
+    api.saveComment(this.state.selectedText, this.state.commentText).then(res => {
+      console.log(res);
+    })
+  }
+
   renderForm = () => {
     if (this.state.showForm) {
       return (
-        <form>
+        <form onSubmit={this.onAddCommentFormSubmit}>
           {this.state.selectedText === "" ? "" : <p>Comment for: {this.state.selectedText}</p>}
           <div className="form-group">
             <label htmlFor="comment" className="text-center">
               Add your comment below
             </label>
-            <textarea className="form-control" id="comment" rows="4" />
+            <textarea className="form-control" id="comment" rows="4" onChange={this.onCommentTextChange} />
           </div>
           <button className="btn btn-primary btn-block">Finish Adding Comment</button>
         </form>
