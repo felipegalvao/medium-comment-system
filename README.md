@@ -1,6 +1,6 @@
-# Datapath Test
+# Medium like Comment System
 
-Objective: "Build a medium.com style commenting / notes system."
+Objective: "Build a medium.com style commenting / notes system using a REST API"
 
 ## Rest API
 
