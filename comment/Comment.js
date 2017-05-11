@@ -3,7 +3,7 @@
 const mongoose = require("mongoose");
 
 const CommentSchema = new mongoose.Schema({
-  postFragment: String
+  postFragment: String,
   text: String
 });
 
