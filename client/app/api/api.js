@@ -15,7 +15,7 @@ module.exports = {
       });
   },
 
-  saveComment: (postFragment, text) => {        
+  saveComment: (postFragment, text) => {
     return axios({
       method: "post",
       url: "http://localhost:3000/comments",
@@ -25,7 +25,7 @@ module.exports = {
       }
     })
       .then(res => {
-        console.log(res);
+        return res;
       })
       .catch(error => {
         console.log(error);
