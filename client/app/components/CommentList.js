@@ -8,8 +8,7 @@ const CommentList = ({ comments, postText, commentsLoading }) => {
       <Comment
         key={comment._id}
         text={comment.text}
-        start={comment.start}
-        end={comment.end}
+        postFragment={comment.postFragment}
         postText={postText}
       />
     );
