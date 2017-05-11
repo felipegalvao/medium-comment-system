@@ -3,6 +3,7 @@ const router = express.Router();
 const bodyParser = require("body-parser");
 
 router.use(bodyParser.urlencoded({ extended: true }));
+router.use(bodyParser.json())
 
 const Comment = require("./Comment");
 
@@ -10,9 +11,8 @@ const Comment = require("./Comment");
 router.post("/", function(req, res) {
   Comment.create(
     {
-      start: req.body.start,
-      end: req.body.end,
-      text: req.body.text
+      text: req.body.text,
+      postFragment: req.body.postFragment
     },
     function(err, comment) {
       if (err)
